@@ -20,25 +20,27 @@ class DoublyLinkedList
 {
     Node<T> *head;
     Node<T> *tail;
+    int length;
 
 public:
     DoublyLinkedList();
     ~DoublyLinkedList();
-    void insert(T); // inserting data at the end of list
-    void print();       //printing the list
+    void append(T); // inserting data at the end of list
+    void print();  //printing the list
+    int size();
 };
 
 int main()
 {
     DoublyLinkedList<int> list;
-    list.insert(1);
-    list.insert(2);
+    list.append(1);
+    list.append(2);
     list.print();
     return 0;
 }
 
 template<typename T>
-DoublyLinkedList<T>::DoublyLinkedList():head(NULL), tail(NULL){};
+DoublyLinkedList<T>::DoublyLinkedList():head(NULL), tail(NULL), length(0){};
 
 template<typename T>
 DoublyLinkedList<T>::~DoublyLinkedList(){
@@ -60,7 +62,7 @@ void DoublyLinkedList<T>::print()
 }
 
 template <typename T>
-void DoublyLinkedList<T>::insert(T data)
+void DoublyLinkedList<T>::append(T data)
 {
     Node<T> *temp = new Node<T>(data);
     if (head == NULL)
@@ -73,5 +75,11 @@ void DoublyLinkedList<T>::insert(T data)
         tail->next = temp;
         tail = temp;
     }
+    length++;
 }
 
+
+template<typename T>
+int DoublyLinkedList<T>::size(){
+    return length;
+}
