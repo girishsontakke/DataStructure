@@ -19,7 +19,7 @@ void build(int ind, int low, int high) {
 // query(0, 0, n-1, givenLow, givenHigh)
 int query(int ind, int low, int high, int l, int r) {
   if (low >= l && high <= r) return seg[ind];
-  if (high<l && low>r) return INT_MIN;
+  if (high<l || low>r) return INT_MIN;
 
   int mid = (low + high) / 2;
   int left = query(ind * 2 + 1, low, mid, l, r);
